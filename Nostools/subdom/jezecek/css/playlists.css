@@ -1,0 +1,35 @@
+#player .player {
+	height: 162px;
+	width:326px;
+	background:black no-repeat scroll center top;
+	position:relative;
+	z-index:2;
+}
+.title, .artist {
+	font-family:verdana;
+	left:167px;
+	position:absolute;
+	-moz-user-select:none;
+	-webkit-user-select:none;
+	-ms-user-select:none;
+}
+.title {
+	color:#FFFFFF;
+	font-size:14px;
+	font-weight:bold;
+	top:23px;
+}
+.artist {
+	color: #EEEEEE;
+	font-size:12px;
+	top: 40px;
+}
+.playlist {
+	background:black no-repeat scroll -274px -175px;
+	cursor:pointer;
+	height:34px;
+	left:270px;
+	position:absolute;
+	top:20px;
+	width:32px;
+}

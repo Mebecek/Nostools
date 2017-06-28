@@ -1,0 +1,43 @@
+# htaccess rules for subdomains and aliases
+# to create new subdomain, create a folder www/subdom/(subdomain name)
+# to create web for alias, create a folder www/domains/(whole domain name)
+
+# htaccess pravidla pro subdomeny a samostatne weby aliasu
+# pro vytvoreni subdomeny vytvorte adresar www/subdom/(nazev subdomeny)
+# pro vytvoreni webu pro alias vytvorte adresar www/domains/(cely domenovy nazev)
+# dalsi info a priklady: http://kb.wedos.com/r/32/webhosting-htaccess.html
+
+RewriteEngine On
+
+# cele domeny (aliasy)
+RewriteCond %{REQUEST_URI} !^domains/
+RewriteCond %{REQUEST_URI} !^/domains/
+RewriteCond %{HTTP_HOST} ^(www\.)?(.*)$
+RewriteCond %{DOCUMENT_ROOT}/domains/%2 -d
+RewriteRule (.*) domains/%2/$1 [DPI]
+
+# subdomeny (s nebo bez www na zacatku)
+RewriteCond %{REQUEST_URI} !^subdom/
+RewriteCond %{REQUEST_URI} !^/subdom/
+RewriteCond %{HTTP_HOST} ^(www\.)?(.*)\.([^\.]*)\.([^\.]*)$
+RewriteCond %{DOCUMENT_ROOT}/subdom/%2 -d
+RewriteRule (.*) subdom/%2/$1 [DPI]
+
+# aliasy - spravne presmerovani pri chybejicim /
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^domains/[^/]+/(.+[^/])$ /$1/ [R]
+
+# subdomeny - spravne presmerovani pri chybejicim /
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^subdom/[^/]+/(.+[^/])$ /$1/ [R]
+
+allow from 95.80.224.126
+allow from 89.103.143.63
+
+ErrorDocument 400 http://nostools.cz/error.php
+ErrorDocument 401 http://nostools.cz/error.php
+ErrorDocument 403 http://nostools.cz/error.php
+ErrorDocument 404 http://nostools.cz/error/404.php
+ErrorDocument 500 http://nostools.cz/error.php
+ErrorDocument 502 http://nostools.cz/error.php
+ErrorDocument 504 http://nostools.cz/error.php

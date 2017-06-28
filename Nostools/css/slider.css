@@ -1,0 +1,59 @@
+
+.transition-timer-carousel .carousel-caption .carousel-caption-header {
+	margin-top: 10px;
+	font-size: 24px;
+	margin-right: 15px;
+	margin-left: 15px;
+}
+
+.carousel {
+	margin-left: 15px;
+	margin-right: 15px;
+	border: 3px solid white;
+}
+
+.carousel-indicators li {
+	border-radius: 0;
+}
+
+.carousel-indicators li {
+	border: 1px solid #7F0000;
+}
+
+.carousel-indicators .active {
+	background-color: #7F0000;
+}
+
+@media (min-width: 970px) {
+    /* Lower the font size of the carousel caption header so that our caption
+    doesn't take up the full image/slide on smaller screens */
+	.transition-timer-carousel .carousel-caption .carousel-caption-header {
+		font-size: 25px;
+	}
+}
+
+.transition-timer-carousel .carousel-indicators {
+	bottom: 0px;
+	margin-bottom: 5px;
+}
+.transition-timer-carousel .carousel-control {
+	z-index: 11;
+}
+.transition-timer-carousel .transition-timer-carousel-progress-bar {
+    height: 5px;
+    background-color: #5cb85c;
+    width: 0%;
+    margin: -5px 0px 0px 0px;
+    border: none;
+    z-index: 11;
+    position: relative;
+}
+.transition-timer-carousel .transition-timer-carousel-progress-bar.animate{
+    /* We make the transition time shorter to avoid the slide transitioning
+    before the timer bar is "full" - change the 4.25s here to fit your
+    carousel's transition time */
+    -webkit-transition: width 4.25s linear;
+	-moz-transition: width 4.25s linear;
+	-o-transition: width 4.25s linear;
+	transition: width 4.25s linear;
+}
